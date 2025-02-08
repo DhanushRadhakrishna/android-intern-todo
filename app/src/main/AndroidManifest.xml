@@ -13,10 +13,11 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <!--  TODO: [Define the required permissions](https://developer.android.com/develop/connectivity/network-ops/connecting)  -->
-
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <!--  TODO: [Specify application class](https://developer.android.com/reference/android/app/Application)  -->
-
     <application
+        android:name=".InternApp"
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
