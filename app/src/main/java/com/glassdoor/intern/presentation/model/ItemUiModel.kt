@@ -24,5 +24,6 @@ internal data class ItemUiModel(
 ) : Parcelable {
 
     @IgnoredOnParcel
-    val key: String = TODO("Determine the key value")
+    val key: String = title
+//    TODO("Determine the key value")
 }

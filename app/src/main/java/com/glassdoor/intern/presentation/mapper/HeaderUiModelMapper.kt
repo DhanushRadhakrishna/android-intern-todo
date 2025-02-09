@@ -20,5 +20,6 @@ internal class HeaderUiModelMapper @Inject constructor() {
 
     fun toUiModel(headerInfo: HeaderInfo): HeaderUiModel = with(headerInfo) {
         TODO("Convert domain model to UI model")
+
     }
 }
