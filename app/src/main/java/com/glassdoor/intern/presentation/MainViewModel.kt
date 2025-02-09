@@ -87,7 +87,7 @@ internal class MainViewModel @Inject constructor(
 
         emit(HideLoadingState)
 
-        emit(UpdateItemsState(uiState.value.items))
+        emit(UpdateItemsState(emptyList()))
 
         emit(UpdateErrorMessageState(errorMessage = throwable.message))
     }
