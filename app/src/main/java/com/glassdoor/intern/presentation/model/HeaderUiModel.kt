@@ -26,7 +26,7 @@ internal class HeaderUiModel(
     val items : List<ItemUiModel>) : Parcelable {
 
     @IgnoredOnParcel
-    val isEmpty: Boolean = items.isEmpty()
+    val isEmpty: Boolean = title.isEmpty() && description.isEmpty() && timestamp.isEmpty() && items.isEmpty()
 //    DONE  TODO("Define empty state")
 
 }
