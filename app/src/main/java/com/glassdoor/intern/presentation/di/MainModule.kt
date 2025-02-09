@@ -9,7 +9,10 @@
 
 package com.glassdoor.intern.presentation.di
 
+import androidx.annotation.StringRes
+import androidx.compose.ui.res.stringResource
 import com.glassdoor.intern.presentation.MainUiState
+import com.glassdoor.intern.presentation.model.HeaderUiModel
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -20,6 +23,15 @@ import dagger.hilt.android.components.ViewModelComponent
 internal object MainModule {
 
     @Provides
-    fun provideMainUiState(): MainUiState =
-        TODO("Define default values and provide initial state")
+    fun provideMainUiState(): MainUiState =MainUiState(
+        errorMessage = null,
+        header = HeaderUiModel(title = "Default Header Title",
+            description = "Default Header Description",
+            timestamp = "0000-00-00T:00:00.0000Z",
+            items = emptyList()
+            ),
+        isLoading = false,
+        items = emptyList()
+    )
+//     DONE   TODO("Define default values and provide initial state")
 }
