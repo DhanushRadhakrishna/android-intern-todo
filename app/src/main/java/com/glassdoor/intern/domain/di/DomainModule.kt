@@ -18,7 +18,7 @@ import dagger.hilt.android.components.ViewModelComponent
 
 
 /**
- * TODO: Determine the [appropriate annotation](https://developer.android.com/codelabs/android-hilt#6) and provide the most optimal [scope component](https://developer.android.com/training/dependency-injection/hilt-android#generated-components)
+ * DONE TODO: Determine the [appropriate annotation](https://developer.android.com/codelabs/android-hilt#6) and provide the most optimal [scope component](https://developer.android.com/training/dependency-injection/hilt-android#generated-components)
  */
 @Module
 @InstallIn(ViewModelComponent::class)

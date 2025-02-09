@@ -99,6 +99,7 @@ private fun HeaderComponent(
             /**
              * TODO: [Declare the UI](https://developer.android.com/codelabs/jetpack-compose-basics#5) based on the UI model structure
              */
+
         }
     }
 }

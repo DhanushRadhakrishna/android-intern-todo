@@ -21,6 +21,7 @@ import com.glassdoor.intern.presentation.MainUiState.PartialState.ShowLoadingSta
 import com.glassdoor.intern.presentation.MainUiState.PartialState.UpdateErrorMessageState
 import com.glassdoor.intern.presentation.MainUiState.PartialState.UpdateHeaderState
 import com.glassdoor.intern.presentation.MainUiState.PartialState.UpdateItemsState
+import com.glassdoor.intern.presentation.mapper.HeaderUiModelMapper
 import com.glassdoor.intern.presentation.mapper.ItemUiModelMapper
 import com.glassdoor.intern.utils.presentation.UiStateMachine
 import com.glassdoor.intern.utils.presentation.UiStateMachineFactory
@@ -43,6 +44,7 @@ internal class MainViewModel @Inject constructor(
     defaultUiState: MainUiState,
     uiStateMachineFactory: UiStateMachineFactory,
     private val getHeaderInfoUseCase: GetHeaderInfoUseCase,
+    private val headerUiModelMapper: HeaderUiModelMapper,
     private val itemUiModelMapper: ItemUiModelMapper,
 ) : ViewModel(), IMainViewModel {
 
@@ -63,6 +65,7 @@ internal class MainViewModel @Inject constructor(
         /**
          * TODO: Refresh the screen only when the header is empty
          */
+
     }
 
     /**
