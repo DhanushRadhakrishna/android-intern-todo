@@ -34,6 +34,9 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.vector.rememberVectorPainter
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.text.font.FontStyle
+import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.tooling.preview.PreviewParameter
 import androidx.compose.ui.tooling.preview.PreviewParameterProvider
@@ -101,9 +104,11 @@ private fun HeaderComponent(
             /**
              *DONE TODO: [Declare the UI](https://developer.android.com/codelabs/jetpack-compose-basics#5) based on the UI model structure
              */
-            Row {
+            Column(modifier = Modifier.padding(8.dp).fillMaxWidth(1f)) {
                 Text(
-                    text = title
+                    text = title,
+                    textAlign = TextAlign.Center,
+                    fontWeight = FontWeight.Bold
                 )
                 Text(
                     text = description
@@ -197,7 +202,7 @@ private typealias HeaderAndItems = Pair<HeaderUiModel, List<ItemUiModel>>
 
 private class ContentComponentPreviewParameterProvider :
     PreviewParameterProvider<HeaderAndItems> by previewParameterProviderOf(
-//        TODO("Define UI models for preview purposes")
+//   DONE     TODO("Define UI models for preview purposes")
         HeaderUiModel(
             title = "Sample Header",
             description = "This is a sample header description",

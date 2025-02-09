@@ -25,6 +25,7 @@ import com.glassdoor.intern.presentation.MainUiState.PartialState.UpdateItemsSta
 import com.glassdoor.intern.presentation.mapper.HeaderUiModelMapper
 import com.glassdoor.intern.presentation.mapper.ItemUiModelMapper
 import com.glassdoor.intern.presentation.model.HeaderUiModel
+import com.glassdoor.intern.presentation.model.ItemUiModel
 import com.glassdoor.intern.utils.presentation.UiStateMachine
 import com.glassdoor.intern.utils.presentation.UiStateMachineFactory
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -69,7 +70,7 @@ internal class MainViewModel @Inject constructor(
          *DONE TODO: Refresh the screen only when the header is empty
          */
         if (uiState.value.header.isEmpty) {
-            onRefreshScreen()
+            acceptIntent(MainIntent.RefreshScreen)
         }
 
     }
@@ -86,7 +87,7 @@ internal class MainViewModel @Inject constructor(
 
         emit(HideLoadingState)
 
-        emit(UpdateItemsState(emptyList()))
+        emit(UpdateItemsState(uiState.value.items))
 
         emit(UpdateErrorMessageState(errorMessage = throwable.message))
     }
@@ -118,7 +119,9 @@ internal class MainViewModel @Inject constructor(
         is UpdateErrorMessageState -> with(partialState) {
             previousUiState.copy(
                 errorMessage = errorMessage,
-                items = if (errorMessage.isNullOrEmpty()) previousUiState.items else emptyList(),
+//                items = if (errorMessage.isNullOrEmpty()) previousUiState.items else emptyList(),
+                //BONUS: The previously loaded list remains on the screen after the error appears
+                items = showPreviousList(errorMessage,previousUiState)
             )
         }
 
@@ -152,5 +155,22 @@ internal class MainViewModel @Inject constructor(
             }
 
         emit(HideLoadingState)
+    }
+
+    fun showPreviousList(errorMessage : String?, previousState: MainUiState) : List<ItemUiModel>
+    {
+        if(errorMessage.isNullOrEmpty())
+        {
+            return previousState.items
+        }
+        else{
+            if(!previousState.items.isEmpty())
+            {
+                return previousState.items
+            }
+            else{
+                return emptyList()
+            }
+        }
     }
 }
