@@ -25,9 +25,9 @@ internal object MainModule {
     @Provides
     fun provideMainUiState(): MainUiState =MainUiState(
         errorMessage = null,
-        header = HeaderUiModel(title = "Default Header Title",
-            description = "Default Header Description",
-            timestamp = "0000-00-00T:00:00.0000Z",
+        header = HeaderUiModel(title = "",
+            description = "",
+            timestamp = "",
             items = emptyList()
             ),
         isLoading = false,

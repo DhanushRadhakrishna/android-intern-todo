@@ -18,7 +18,7 @@ import com.glassdoor.intern.presentation.theme.InternTheme
 import dagger.hilt.android.AndroidEntryPoint
 
 /**
- * TODO: [Annotate a class for dependency injection](https://developer.android.com/training/dependency-injection/hilt-android#android-classes)
+ *DONE TODO: [Annotate a class for dependency injection](https://developer.android.com/training/dependency-injection/hilt-android#android-classes)
  */
 @AndroidEntryPoint
 internal class MainActivity : ComponentActivity() {
@@ -31,7 +31,7 @@ internal class MainActivity : ComponentActivity() {
         setContent {
             InternTheme {
                 /**
-                 * TODO: Define the main composable to display
+                 *DONE TODO: Define the main composable to display
                  */
                 MainScreen(viewModel)
             }
