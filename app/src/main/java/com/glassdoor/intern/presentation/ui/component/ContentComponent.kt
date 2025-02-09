@@ -69,10 +69,12 @@ internal fun ContentComponent(
         verticalArrangement = Arrangement.spacedBy(InternTheme.dimensions.double),
     ) {
         /**
-         * TODO: Specify the [item key](https://developer.android.com/jetpack/compose/lists#item-keys) and [content type](https://developer.android.com/jetpack/compose/lists#content-type)
+         *DONE TODO: Specify the [item key](https://developer.android.com/jetpack/compose/lists#item-keys) and [content type](https://developer.android.com/jetpack/compose/lists#content-type)
          */
         items(
             items = items,
+            key = {item -> item.key},
+            contentType = {  },
             itemContent = { item -> ItemComponent(item) },
         )
     }
@@ -97,12 +99,24 @@ private fun HeaderComponent(
     ) {
         with(header) {
             /**
-             * TODO: [Declare the UI](https://developer.android.com/codelabs/jetpack-compose-basics#5) based on the UI model structure
+             *DONE TODO: [Declare the UI](https://developer.android.com/codelabs/jetpack-compose-basics#5) based on the UI model structure
              */
+            Row {
+                Text(
+                    text = title
+                )
+                Text(
+                    text = description
+                )
+                Text(
+                    text = timestamp
+                )
+            }
 
         }
     }
 }
+
 
 @Composable
 private fun ItemComponent(item: ItemUiModel) = Card {
@@ -143,7 +157,7 @@ private fun ItemComponent(item: ItemUiModel) = Card {
                 contentDescription = title,
                 contentScale = ContentScale.Crop,
                 error = rememberVectorPainter(Icons.Default.Warning),
-                model = TODO("[Request an image download](https://github.com/coil-kt/coil#requests)"),
+                model = item.imageUrl    //DONE TODO("[Request an image download](https://github.com/coil-kt/coil#requests)"),
             )
         }
     }
@@ -183,12 +197,37 @@ private typealias HeaderAndItems = Pair<HeaderUiModel, List<ItemUiModel>>
 
 private class ContentComponentPreviewParameterProvider :
     PreviewParameterProvider<HeaderAndItems> by previewParameterProviderOf(
-        TODO("Define UI models for preview purposes")
+//        TODO("Define UI models for preview purposes")
+        HeaderUiModel(
+            title = "Sample Header",
+            description = "This is a sample header description",
+            timestamp = "2024-02-08T12:00:00.000Z",
+            items = emptyList()
+        ) to listOf(
+            ItemUiModel(
+                title = "Item 1",
+                description = "Description for item 1",
+                imageUrl = null,
+                timestamp = "10:00"
+            ),
+            ItemUiModel(
+                title = "Item 2",
+                description = "Description for item 2",
+                imageUrl = "https://example.com/image.png",
+                timestamp = "11:30"
+            )
+        )
     )
 
 private class HeaderComponentPreviewParameterProvider :
     PreviewParameterProvider<HeaderUiModel> by previewParameterProviderOf(
-        TODO("Define UI models for preview purposes")
+//     DONE   TODO("Define UI models for preview purposes")
+        HeaderUiModel(
+            title = "Header Title",
+            description = "Header Description",
+            timestamp = "0000-00-00T:00:00.0000Z",
+            items = emptyList()
+        )
     )
 
 private class ItemComponentPreviewParameterProvider :
