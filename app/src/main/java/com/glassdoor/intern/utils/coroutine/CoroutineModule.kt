@@ -20,7 +20,7 @@ import javax.inject.Singleton
 import kotlin.coroutines.CoroutineContext
 
 /**
- * TODO: [Annotate the DI module](https://developer.android.com/training/dependency-injection/hilt-android#hilt-modules) with correct definitions and [component](https://developer.android.com/training/dependency-injection/hilt-android#hilt-modules)
+ *DONE TODO: [Annotate the DI module](https://developer.android.com/training/dependency-injection/hilt-android#hilt-modules) with correct definitions and [component](https://developer.android.com/training/dependency-injection/hilt-android#hilt-modules)
  */
 @Module
 @InstallIn(SingletonComponent::class)
@@ -34,7 +34,7 @@ internal object CoroutineModule {
         }
 
     /**
-     * TODO: Annotate dependency with the correct [qualifier label](https://developer.android.com/training/dependency-injection/hilt-android#multiple-bindings)
+     *DONE TODO: Annotate dependency with the correct [qualifier label](https://developer.android.com/training/dependency-injection/hilt-android#multiple-bindings)
      */
     @Singleton
     @Provides

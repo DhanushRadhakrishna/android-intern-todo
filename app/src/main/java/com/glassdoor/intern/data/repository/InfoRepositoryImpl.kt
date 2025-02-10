@@ -33,7 +33,7 @@ internal class InfoRepositoryImpl @Inject constructor(
                 when {
                     header != null -> Ok(headerInfoMapper.toDomain(header,items)) //DONE TODO("Convert DTO into domain model")
                     error != null -> Err(Throwable(error))//DONE TODO("Convert to error")
-                    else -> Err(Throwable("Undefined"))//DONE TODO("Convert to error")
+                    else -> Err(Throwable("Undefined Response"))//DONE TODO("Convert to error")
                 }
             }
         } catch (throwable: Throwable) {

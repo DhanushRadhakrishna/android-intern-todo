@@ -70,18 +70,21 @@ internal fun MainScreen(
 @Composable
 private fun MainScreenPreview() = InternTheme {
 
-TODO("Define UI state for preview purposes")
+//DONE TODO("Define UI state for preview purposes")
 
+    val items = listOf(ItemUiModel("HeaderItemTitle",
+        "HeaderItemDescription",
+        "http://url.jpeg",
+        "HeaderItemTimestamp"))
+    val uiState = MainUiState(
+        header = HeaderUiModel(title = "Title", description = "Description", timestamp = "00/00/0000",items),
+        isLoading = false,
+        errorMessage = "",
+        items = listOf(
+            ItemUiModel(title = "Item 1", description = "Description 1", imageUrl = "URL 1", timestamp = "Timestamp 1"),
+            ItemUiModel(title = "Item 2", description = "Description 2", imageUrl = "URL 2", timestamp = "Timestamp 2")
+        )
+    )
 
-//    val uiState = MainUiState(
-//        header = HeaderUiModel(),
-//        items = listOf(
-//            ItemUiModel(title = "Item 1", description = "Description 1", imageUrl = "URL 1", timestamp = "Timestamp 1"),
-//            ItemUiModel(title = "Item 2", description = "Description 2", imageUrl = "URL 2", timestamp = "Timestamp 2")
-//        ),
-//        isLoading = false,
-//        errorMessage = "Error"
-//    )
-
-//    MainScreen(viewModel = uiState.asDummyViewModel)
+    MainScreen(viewModel = uiState.asDummyViewModel)
 }
