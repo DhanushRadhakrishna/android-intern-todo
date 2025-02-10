@@ -33,7 +33,7 @@ import kotlinx.coroutines.delay
 /**
  *DONE TODO: Define how long the error message will be displayed
  */
-private const val SHOW_ERROR_MESSAGE_DURATION_IS_MILLIS: Long = 1000L
+private const val SHOW_ERROR_MESSAGE_DURATION_IS_MILLIS: Long = 3000L
 
 @Composable
 internal fun ErrorMessageComponent(
