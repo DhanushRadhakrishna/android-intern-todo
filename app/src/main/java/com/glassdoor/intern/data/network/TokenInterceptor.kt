@@ -13,7 +13,10 @@ import com.glassdoor.intern.BuildConfig
 import okhttp3.HttpUrl
 import okhttp3.Interceptor
 import okhttp3.Interceptor.Chain
+import okhttp3.Protocol
 import okhttp3.Response
+import okhttp3.ResponseBody
+import okhttp3.ResponseBody.Companion.toResponseBody
 import javax.inject.Inject
 
 private const val TOKEN_KEY: String = "token"
@@ -25,26 +28,37 @@ private const val TOKEN_VALUE: String = "dradh003@ucr.edu"
 
 internal class TokenInterceptor @Inject constructor() : Interceptor {
 
-    override fun intercept(chain: Chain): Response = chain.proceed(
-        chain.request().run {
-            when {
-                chain.hashCode() % 5 == 0 -> {
-                    error("System malfunction: incorrect hash code")
-                }
+    override fun intercept(chain: Chain): Response {
+        return try {
+            chain.proceed(
+                chain.request().run {
+                    when {
+                        chain.hashCode() % 5 == 0 -> {
+                            error("System malfunction: incorrect hash code")
+                        }
+                        url.toString().endsWith(BuildConfig.ENDPOINT_GET_INFO) -> {
+                            val url: HttpUrl = url
+                                .newBuilder()
+                                .addQueryParameter(TOKEN_KEY, TOKEN_VALUE)
+                                .build()
 
-                url.toString().endsWith(BuildConfig.ENDPOINT_GET_INFO) -> {
-                    val url: HttpUrl = url
-                        .newBuilder()
-                        .addQueryParameter(TOKEN_KEY, TOKEN_VALUE)
-                        .build()
-
-                    newBuilder().url(url).build()
+                            newBuilder().url(url).build()
+                        }
+                        else -> {
+                            this
+                        }
+                    }
                 }
+            )
+        } catch (e: Exception) {
 
-                else -> {
-                    this
-                }
-            }
+            Response.Builder()
+                .request(chain.request())
+                .protocol(Protocol.HTTP_1_1)
+                .code(500)
+                .message(e.message ?: "Hash code error")
+                .body("".toResponseBody(null))
+                .build()
         }
-    )
+    }
 }
